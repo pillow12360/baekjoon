@@ -25,6 +25,7 @@ def stackfunc(A,B):
       else:
         print("-1")
 
+
 num = int(input())
 
 stack = []
@@ -42,5 +43,5 @@ while(num>0):
 
   stackfunc(A,B)
 
-  num = num-1
+  num += -1
 
