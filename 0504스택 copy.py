@@ -1,33 +1,33 @@
-class Node ():
+class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        
-class LinkedList():
-    def __init__(self):
-      self.head = None
 
-    def push(self,value):
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def push(self, value):
         new_node = Node(value)
         if self.head is None:
             self.head = new_node
         else:
             current = self.head
-            while(current.next):
+            while current.next:
                 current = current.next
-            current.next = self.current = new_node
+            current.next = new_node
 
     def size(self):
-        self.current = self.head
+        current = self.head
         num = 0
-        while(self.current):
-            self.current = self.current.next
+        while current:
+            current = current.next
             num += 1
         print(num)
 
     def top(self):
         current = self.head
-        while (current.next):
+        while current.next:
             current = current.next
         print(current.value)
 
@@ -39,38 +39,43 @@ class LinkedList():
 
     def pop(self):
         if self.head is not None:
-          current = self.head
-          while (current.next):
-            current = current.next
-          print(current.value)
-          current = None
+            if self.head.next is None:
+                value = self.head.value
+                self.head = None
+                print(value)
+            else:
+                current = self.head
+                prev = None
+                while current.next:
+                    prev = current
+                    current = current.next
+                prev.next = None
+                print(current.value)
         else:
             print(-1)
+
+def stackfunc(A, B, stack):
+    if A == "push":
+        stack.push(B)
+    elif A == "pop":
+        stack.pop()
+    elif A == "empty":
+        stack.empty()
+    elif A == "top":
+        stack.top()
+    elif A == "size":
+        stack.size()
 
 num = int(input())
 
 ll = LinkedList()
 
-while(num>0):
-
-  C = input()
-  if " " in C:
-    A, B = C.split()
-    A = str(A)
-
-  else:
-    A = str(C)
-    B = None
-
-  if A == "push":
-      ll.push(B)
-  elif A == "pop":
-      ll.pop()
-  elif A == "empty":
-      ll.empty()
-  elif A == "top":
-      ll.top()
-  elif A == "size":
-      ll.size()
-
-  num -= 1
+while num > 0:
+    C = input()
+    if " " in C:
+        A, B = C.split()
+    else:
+        A = C
+        B = None
+    stackfunc(A, B, ll)
+    num -= 1
