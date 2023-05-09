@@ -66,7 +66,7 @@ def stackfunc(A, B, stack):
     elif A == "size":
         stack.size()
 
-num = int(input())
+num = input()
 
 ll = LinkedList()
 
